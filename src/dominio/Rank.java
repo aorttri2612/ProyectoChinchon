@@ -21,6 +21,6 @@ public class Rank {
 
     @Override
     public String toString() {
-        return String.format("%s %s",cardValue.getValue() ,suit.getEmoji());
+        return String.format("%d %s",cardValue.getValue() ,suit.getEmoji());
     }
 }

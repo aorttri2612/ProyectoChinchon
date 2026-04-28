@@ -60,7 +60,7 @@ public class HumanPlayer extends Player {
         hand.Discardcard(index); // Tu método de Hand que usa remove(int)
         discard.discard.add(toDiscard); // Se añade al ArrayList de la clase Discard
         
-        System.out.println("Has descartado: " + toDiscard);
+        System.out.printf("Has descartado: %s\n", toDiscard);
     }
 	
 	public void showSuggestion() {
@@ -70,8 +70,7 @@ public class HumanPlayer extends Player {
                 suggestion = r;
             }
         }
-        System.out.println(" Sugerencia de la IA: Deberías descartar " + suggestion + 
-                           " porque es tu carta de mayor valor.");
+        System.out.printf("💡 Sugerencia: Deberías descartar %s porque tiene el valor más alto.\n", suggestion);
     }
 	
 }

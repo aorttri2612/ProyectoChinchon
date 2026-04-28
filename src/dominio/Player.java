@@ -29,11 +29,5 @@ public abstract class Player {
 		this.score += points;
 	}
 
-	// Método abstracto para que cada tipo de jugador decida cómo jugar su turno
-	public abstract void playTurn();
-
-	public void playTurn(Discard discard, Deck deck) {
-		// TODO Auto-generated method stub
-
-	}
+	public abstract void playTurn(Discard discard, Deck deck);
 }

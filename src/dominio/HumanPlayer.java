@@ -31,15 +31,14 @@ public class HumanPlayer extends Player {
 				stealDeck(deck);
 			}
 		} else if (opcion == 2) {
-			discardCard(input);
+			discardCard(input, discard);
 		} else if (opcion == 3) {
-
+			showSuggestion();
 		}
 
 		// Aquí iría la lógica de es decir falta aun:
-		// 1. Robar (Mazo o Descarte)
 		// 2. Mostrar sugerencia de descarte
-		// 3. Descartar
+	
 	}
 
 	public void steal(Discard discard) {
@@ -52,20 +51,27 @@ public class HumanPlayer extends Player {
 
 	}
 
-	public void discardCard(ConsoleInput input) {
-		System.out.println("¿Que carta desea descartar?. Ponlo contando de izquierda a derecha "); // intenatr cambiar
-																									// pero esto
-																									// funciona
-		int numeroCarta = input.readInt();
-		numeroCarta = numeroCarta - 1;
-		hand.ShowHand();
-		hand.Discardcard(numeroCarta);
-
-	}
-
-	@Override
-	public void playTurn() {
-		// TODO Auto-generated method stub
-
-	}
+	public void discardCard(ConsoleInput input, Discard discard) { //cambiado el metodo discardCard
+        System.out.println("Introduce el índice de la carta a descartar (0-6):");
+        int index = input.readInt();
+        
+        // Obtenemos la carta antes de borrarla para ponerla en la pila de descarte
+        Rank toDiscard = hand.hand.get(index);
+        hand.Discardcard(index); // Tu método de Hand que usa remove(int)
+        discard.discard.add(toDiscard); // Se añade al ArrayList de la clase Discard
+        
+        System.out.println("Has descartado: " + toDiscard);
+    }
+	
+	public void showSuggestion() {
+        Rank suggestion = hand.hand.get(0);
+        for (Rank r : hand.hand) {
+            if (r.getCardValue().getValue() > suggestion.getCardValue().getValue()) {
+                suggestion = r;
+            }
+        }
+        System.out.println(" Sugerencia de la IA: Deberías descartar " + suggestion + 
+                           " porque es tu carta de mayor valor.");
+    }
+	
 }

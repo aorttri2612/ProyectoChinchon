@@ -6,20 +6,20 @@ public class Discard {
 
 	// guardar la ultima carta del monton de descarte
 
-	ArrayList<Rank> discard;
+	private ArrayList<Rank> discard;
 
 	public Discard(ArrayList<Rank> discard) {
 		super();
-		this.discard = discard;
+		this.setDiscard(discard);
 	}
 
 	public Rank getLastCard() {
-		return discard.get(discard.size() - 1);
+		return getDiscard().get(getDiscard().size() - 1);
 	}
 
 	public void ShowCardDiscard() {
 
-		System.out.println(discard.size() - 1);
+		System.out.println(getDiscard().size() - 1);
 
 	}
 
@@ -27,9 +27,17 @@ public class Discard {
 		// ahora solo la
 		// quitamos de la pila
 
-		discard.remove(discard.size() - 1);
+		getDiscard().remove(getDiscard().size() - 1);
 
-		return discard.get(0);
+		return getDiscard().get(0);
+	}
+
+	public ArrayList<Rank> getDiscard() {
+		return discard;
+	}
+
+	public void setDiscard(ArrayList<Rank> discard) {
+		this.discard = discard;
 	}
 
 }

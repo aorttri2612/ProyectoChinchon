@@ -101,7 +101,5 @@ public class HumanPlayer extends Player {
 		hand.AddCards(deck.takeCardFromDeck(currentDeck));
 	}
 
-	public void close() { // metodo creado no terminado ni hecho
-
-	}
+	
 }

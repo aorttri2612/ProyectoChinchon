@@ -29,6 +29,10 @@ public abstract class Player {
 	public void addPoints(int points) { // falta la lógica
 		this.score += points;
 	}
+	
+	public void close() { // metodo creado no terminado ni hecho
+
+	}
 
 	public abstract void playTurn(Discard discard, Deck deck, List<Rank> currentDeck, int count);
 }

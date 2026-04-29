@@ -1,5 +1,7 @@
 package dominio;
 
+import java.util.List;
+
 import app.ConsoleInput;
 
 public class HumanPlayer extends Player {
@@ -9,7 +11,7 @@ public class HumanPlayer extends Player {
 	}
 
 	@Override
-	public void playTurn(Discard discard, Deck deck) {
+	public void playTurn(Discard discard, Deck deck, List<Rank> currentDeck, int count) {
 		ConsoleInput input = ConsoleInput.getInstance();
 		System.out.printf("\n--- TURN OF: %s ---\n", name.toUpperCase());
 		hand.ShowHand();
@@ -21,10 +23,14 @@ public class HumanPlayer extends Player {
 			System.out.println("¿De dónde quieres robar?");
 			System.out.println("1. Mazo (Boca abajo)");
 			System.out.println("2. Descarte (Pila visible)");
-			
+			if (count > 1) {
+				System.out.println("3. cerrar (posibilidad ganar juego)");
+
+			}
+
 			int choice = input.readInt();
 			if (choice == 1) {
-				stealDeck(deck);
+				stealDeck(deck, currentDeck);
 				System.out.println("Has robado del mazo.");
 				hasDrawn = true;
 			} else if (choice == 2) {
@@ -46,7 +52,7 @@ public class HumanPlayer extends Player {
 			System.out.println("\nMENÚ DE DESCARTE");
 			System.out.println("1. Elegir carta para descartar");
 			System.out.println("2. Pedir sugerencia a la IA");
-			
+
 			int option = input.readInt();
 			if (option == 1) {
 				discardCard(input, discard);
@@ -64,7 +70,7 @@ public class HumanPlayer extends Player {
 	public void discardCard(ConsoleInput input, Discard discard) {
 		System.out.println("Introduce el índice de la carta a descartar (0-7):");
 		int index = input.readInt();
-		
+
 		// Validar que el índice existe en la mano de 8 cartas
 		if (index >= 0 && index < hand.hand.size()) {
 			Rank toDiscard = hand.hand.get(index);
@@ -91,7 +97,11 @@ public class HumanPlayer extends Player {
 		hand.AddCards(discard.getRemoveCard());
 	}
 
-	public void stealDeck(Deck deck) {
-		hand.AddCards(deck.takeCardFromDeck());
+	public void stealDeck(Deck deck, List<Rank> currentDeck) {
+		hand.AddCards(deck.takeCardFromDeck(currentDeck));
+	}
+
+	public void close() { // metodo creado no terminado ni hecho
+
 	}
 }

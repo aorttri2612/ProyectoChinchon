@@ -1,6 +1,7 @@
 package dominio;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Player {
 	protected String name;
@@ -29,5 +30,5 @@ public abstract class Player {
 		this.score += points;
 	}
 
-	public abstract void playTurn(Discard discard, Deck deck);
+	public abstract void playTurn(Discard discard, Deck deck, List<Rank> currentDeck, int count);
 }

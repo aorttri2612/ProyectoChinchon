@@ -1,5 +1,7 @@
 package dominio;
 
+import java.util.List;
+
 public class AiPlayer extends Player {
 
 	public AiPlayer(String name) {
@@ -7,7 +9,7 @@ public class AiPlayer extends Player {
 	}
 
 	@Override
-	public void playTurn(Discard discard, Deck deck) {
+	public void playTurn(Discard discard, Deck deck, List<Rank> currentDeck, int count) {
 		System.out.printf("\n--- TURNO IA: %s ---\n", name);
 
 		// 1. Robo automático
@@ -15,7 +17,7 @@ public class AiPlayer extends Player {
 			steal(discard);
 			System.out.printf("%s robó del descarte.\n", name);
 		} else {
-			stealDeck(deck);
+			stealDeck(deck, currentDeck);
 			System.out.printf("%s robó del mazo.\n", name);
 		}
 
@@ -37,7 +39,7 @@ public class AiPlayer extends Player {
 		hand.AddCards(discard.getRemoveCard());
 	}
 
-	public void stealDeck(Deck deck) {
-		hand.AddCards(deck.takeCardFromDeck());
+	public void stealDeck(Deck deck, List<Rank> currentDeck) {
+		hand.AddCards(deck.takeCardFromDeck(currentDeck));
 	}
 }

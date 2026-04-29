@@ -27,9 +27,8 @@ public class Discard {
 		// ahora solo la
 		// quitamos de la pila
 
-		getDiscard().remove(getDiscard().size() - 1);
+		return getDiscard().remove(getDiscard().size() - 1);
 
-		return getDiscard().get(0);
 	}
 
 	public ArrayList<Rank> getDiscard() {

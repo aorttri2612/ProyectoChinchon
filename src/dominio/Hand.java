@@ -18,7 +18,7 @@ public class Hand {
 
 	public void AddCards(Rank card) {
 
-		if (hand.size() <= 7) {
+		if (hand.size() <= 8) {
 			hand.add(card);
 
 		} else {
@@ -35,7 +35,7 @@ public class Hand {
 
 	public void ShowHand() {
 
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < hand.size(); i++) {
 			System.out.println(hand.get(i));
 
 		}

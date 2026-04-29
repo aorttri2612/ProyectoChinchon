@@ -38,7 +38,7 @@ public class Deck {
 		return deck;
 	}
 
-	public Rank takeCardFromDeck() {
+	public Rank takeCardFromDeck(List<Rank> deck) {
 		deck.remove(deck.size() - 1);
 		return deck.get(0);
 	}
